@@ -5,11 +5,10 @@ class Table {
     private int[] valores;
 
     public Table(int[] numeros, int tamanhoColuna) {
-        int tamanhoLinha = numeros.length;
+        Arrays.sort(numeros);
         valores = numeros;
-        tabela = new Flag[tamanhoLinha][tamanhoColuna];
+        tabela = new Flag[numeros.length][tamanhoColuna];
         preencherDefault();
-        System.out.println(Arrays.asList(tabela[1]));
     }
 
     private void preencherDefault() {
@@ -19,5 +18,10 @@ class Table {
         for (int i = 1; i < this.tabela.length; i++) {
             this.tabela[i][0] = Flag.REPETIDO;
         }
+    }
+
+    public Flag[][] executar() {
+        
+        return this.tabela;
     }
 }
