@@ -21,7 +21,18 @@ class Table {
     }
 
     public Flag[][] executar() {
-        
+        for(int i = 1; i < this.tabela.length; i++) {
+            for (int j = 1; j < this.tabela[0].length; j++) {
+                Flag atualMenosValor = this.tabela[i - 1][j - (this.valores[j - 1])];
+                if (this.tabela[i-1][j] == Flag.VERDADEIRA) {
+                    this.tabela[i][j] = Flag.REPETIDO;
+                } else if (atualMenosValor == Flag.REPETIDO || atualMenosValor == Flag.VERDADEIRA) {
+                    this.tabela[i][j] = Flag.VERDADEIRA;
+                } else {
+                    this.tabela[i][j] = Flag.FALSA;
+                }
+            }
+        }
         return this.tabela;
     }
 }
