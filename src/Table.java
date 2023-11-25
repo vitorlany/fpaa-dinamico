@@ -1,13 +1,13 @@
 import java.util.Arrays;
 
 class Table {
-    private Flag[][] tabela;
-    private int[] valores;
+    private final Flag[][] tabela;
+    private final int[] valores;
 
-    public Table(int[] numeros, int tamanhoColuna) {
-        Arrays.sort(numeros);
-        valores = numeros;
-        tabela = new Flag[numeros.length][tamanhoColuna];
+    public Table(int[] valores, int tamanhoColuna) {
+        Arrays.sort(valores);
+        this.valores = valores;
+        this.tabela = new Flag[valores.length+1][tamanhoColuna+1];
         preencherDefault();
     }
 
@@ -27,7 +27,8 @@ class Table {
                 Flag atualMenosValor = this.tabela[i - 1][j - (this.valores[i])];
                 if (this.tabela[i-1][j] == Flag.VERDADEIRA) {
                     this.tabela[i][j] = Flag.REPETIDO;
-                } else if (atualMenosValor == Flag.REPETIDO || atualMenosValor == Flag.VERDADEIRA) {
+                } else if (atualMenosValor == Flag.REPETIDO
+                        || atualMenosValor == Flag.VERDADEIRA) {
                     this.tabela[i][j] = Flag.VERDADEIRA;
                 } else {
                     this.tabela[i][j] = Flag.FALSA;
