@@ -24,7 +24,7 @@ class Table {
         for(int i = 1; i < this.tabela.length; i++) {
             for (int j = 1; j < this.tabela[0].length; j++) {
                 //TODO: Corrigir essa logica
-                Flag atualMenosValor = this.tabela[i - 1][j - (this.valores[i])];
+                Flag atualMenosValor = this.tabela[i - 1][j - i];
                 if (this.tabela[i-1][j] == Flag.VERDADEIRA) {
                     this.tabela[i][j] = Flag.REPETIDO;
                 } else if (atualMenosValor == Flag.REPETIDO
@@ -37,4 +37,5 @@ class Table {
         }
         return this.tabela;
     }
+
 }
