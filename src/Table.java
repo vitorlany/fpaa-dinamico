@@ -23,12 +23,17 @@ class Table {
 
     public Flag[][] gerarTabela() {
         for(int i = 1; i < this.tabela.length; i++) {
-            for (int j = 1; j < this.tabela[0].length; j++) {
-                //TODO: Validar lógica
-                int atualMenosValor = j-1 + rotas.get(i-1).getTotal();
+            int primeiroIndex = rotas.get(i-1).getTotal();
+            for (int r = 0; r < primeiroIndex; r++) {
+                Flag res = tabela[i-1][r];
+                if (res == Flag.VERDADEIRA)
+                    res = Flag.REPETIDO;
+                tabela[i][r] = res;
+            }
+            for (int j = primeiroIndex; j < this.tabela[0].length; j++) {
                 if (this.tabela[i-1][j] == Flag.VERDADEIRA) {
                     this.tabela[i][j] = Flag.REPETIDO;
-                } else if (atualMenosValor == j) {
+                } else if (this.tabela[i-1][j-primeiroIndex] == Flag.VERDADEIRA) {
                     this.tabela[i][j] = Flag.VERDADEIRA;
                 } else {
                     this.tabela[i][j] = Flag.FALSA;
