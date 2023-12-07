@@ -1,0 +1,14 @@
+
+z	java:S135/"YReduce the total number of break and continue statements in this loop to use at most one.(¾†çüÿÿÿÿ8òœõªÄ1
+G
+java:S1197"*Move the array designators [] to the type.(¯†€á8Æ’ÖªÄ1
+G
+java:S1197-"*Move the array designators [] to the type.(µ˜Æ–8Ç’ÖªÄ1
+A
+java:S1659."Declare "j" on a separate line.(õÄãËÿÿÿÿÿ8È’ÖªÄ1
+L
+java:S1197?"*Move the array designators [] to the type.(º ìıÿÿÿÿ8È’ÖªÄ1
+L
+java:S1197C"*Move the array designators [] to the type.(‹Î™ùÿÿÿÿ8É’ÖªÄ1
+@
+java:S1128"$Remove this unused import 'java.io'.(¬›ãD8Ã´éªÄ1
