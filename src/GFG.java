@@ -42,34 +42,38 @@ class GFG {
     }
 
     // Método para retornar os elementos do conjunto que se encaixam no subconjunto
-    static void printElementsInSubset(int set[], int n, int sum, boolean[][] subset) {
-        int i = sum, j = n;
-        for (int k = sum; k > 0; k--) {
-            if (!subset[k][n]) continue;
+    static void printElementsInSubset(int set[], boolean[][] subset) {
+        int total = 0;
+        int i = subset.length-1, j = set.length;
+        for (int k = i; k > 0; k--) {
+            if (!subset[k][j]) continue;
             System.out.println(k);
             i = k;
             break;
         }
         while (i > 0 && j > 0) {
             if (subset[i][j] != subset[i][j - 1]) {
+                total += set[j - 1];
                 System.out.println("Elemento no subconjunto: " + set[j - 1]);
                 i = i - set[j - 1];
             }
             j--;
         }
+        System.out.println("Total: " + total);
+        //TODO: objeto de resposta contendo a lsita do conjunto e total
     }
 
     // Driver code
     public static void main(String args[])
     {
-        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(3, 10, 1);
+        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(10, 1, 1);
 
-        int set[] = rotasGeradas.get(1);
+        int set[] = rotasGeradas.get(0);
         System.out.println(Arrays.toString(set));
-        int sum = 50;
+        int sum = 37; // será passado de cada caminhão
         int n = set.length;
         boolean[][] subsetSum = isSubsetSum(set, n, sum);
-        printElementsInSubset(set, n, sum, subsetSum);
+        printElementsInSubset(set, subsetSum);
     }
 }
 
