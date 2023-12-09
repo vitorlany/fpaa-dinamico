@@ -11,7 +11,8 @@ public class Main {
         List<Integer> set = new ArrayList<>(Arrays.stream(rotasGeradas.get(0))
                 .boxed()
                 .toList());
-        int sum = set.stream().mapToInt(a -> a).sum()/caminhoes;
+        // Calcula o ideal para cada um, e arredonda, evitando decimais
+        int sum = (int) Math.round(set.stream().mapToDouble(a -> a).sum()/caminhoes);
 
         System.out.println("Initial: " + set);
 
@@ -22,7 +23,12 @@ public class Main {
             System.out.println(rota.rotas());
             System.out.println(rota.total());
 
-            set.removeAll(rota.rotas());
+            // Garantimos que removemos apenas 1
+            for (int r: rota.rotas()) {
+                set.remove(set.indexOf(r));
+            }
+
+            // Garante margem de erro que não foi suprida
             sum += sum - rota.total();
             System.out.println("====================");
         }
