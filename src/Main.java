@@ -5,14 +5,15 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(10, 1, 1);
+        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(25, 1, 1);
         int caminhoes = 3;
 
         List<Integer> set = new ArrayList<>(Arrays.stream(rotasGeradas.get(0))
                 .boxed()
                 .toList());
+
         // Calcula o ideal para cada um, e arredonda, evitando decimais
-        int sum = (int) Math.round(set.stream().mapToDouble(a -> a).sum()/caminhoes);
+        int sum = (int) Math.ceil(set.stream().mapToDouble(a -> a).sum()/caminhoes);
 
         System.out.println("Initial: " + set);
 
