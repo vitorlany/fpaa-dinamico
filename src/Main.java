@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(25, 10, 1);
+        List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(250, 10, 1);
         final int caminhoes = 3;
 
         List<List<DtoResposta>> respostas = new ArrayList<>();
@@ -14,7 +14,25 @@ public class Main {
             respostas.add(getRotas(caminhoes, rotasGerada));
         }
 
-        System.out.println(respostas);
+        respostas.forEach(conjunto -> {
+            int[] totaisRotas = conjunto.stream()
+                    .mapToInt(resCaminhoes -> resCaminhoes.rota().total())
+                    .toArray();
+
+            double mediaTempo = conjunto.stream()
+                    .mapToLong(DtoResposta::timmer)
+                    .average()
+                    .orElse(-1);
+
+            double desvioPadrao = Utils.calcularDesvioPadrao(totaisRotas);
+            int amplitude = Utils.calcularAmplitude(totaisRotas);
+
+            System.out.println("Totais de rota: " + Arrays.toString(totaisRotas));
+            System.out.println("Desvio Padrão: " + desvioPadrao);
+            System.out.println("Amplitude: " + amplitude);
+            System.out.println("Media tempo: " + mediaTempo);
+            System.out.println();
+        });
     }
 
     private static List<DtoResposta> getRotas(int caminhoes, int[] array) {
@@ -22,7 +40,7 @@ public class Main {
                 .boxed()
                 .toList());
         List<DtoResposta> respostas = new ArrayList<>();
-        int sum = (int) Math.ceil(set.stream().mapToDouble(a -> a).sum()/ caminhoes);
+        int sum = (int) Math.ceil(set.stream().mapToDouble(a -> a).sum()/caminhoes);
 
         for (int i = 0; i < caminhoes; i++) {
             String label = "Caminhão " + (i + 1);
