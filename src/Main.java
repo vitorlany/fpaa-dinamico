@@ -14,6 +14,7 @@ public class Main {
             respostas.add(getRotas(caminhoes, rotasGerada));
         }
 
+        // Imprimir Relatório
         respostas.forEach(conjunto -> {
             int[] totaisRotas = conjunto.stream()
                     .mapToInt(resCaminhoes -> resCaminhoes.rota().total())
