@@ -9,7 +9,7 @@ public class Main {
         List<int[]> rotasGeradas = List.of(
                 new int[]{40,36,38,29,32,28,31,35,31,30,32,30,29,39,35,38,39,35,32,38,32,33,29,33,29,39,28},
                 new int[]{32,51,32,43,42,30,42,51,43,51,29,25,27,32,29,55,43,29,32,44,55,29,53,30,24,27});
-        //List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(250, 10, 1);
+        //List<int[]> rotasGeradas = GeradorDeProblemas.geracaoDeRotas(26, 10, 1);
         final int caminhoes = 3;
 
         List<List<DtoResposta>> respostas = new ArrayList<>();
