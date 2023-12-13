@@ -30,7 +30,7 @@ public class Main {
                     .toArray();
 
             double mediaTempo = conjunto.stream()
-                    .mapToLong(DtoResposta::timmer)
+                    .mapToDouble(DtoResposta::timmer)
                     .average()
                     .orElse(-1);
 
@@ -64,12 +64,12 @@ public class Main {
         for (int i = 0; i < caminhoes; i++) {
             String label = "Caminhão " + (i + 1);
 
-            long timmer = System.currentTimeMillis();
+            double timmer = System.nanoTime();
             boolean[][] subsetSum = GFG.subsetSum(set, sum);
             Rota rota = GFG.getResults(set, subsetSum);
-            timmer = System.currentTimeMillis() - timmer;
+            timmer = System.nanoTime() - timmer;
 
-            respostas.add(new DtoResposta(label, rota, timmer));
+            respostas.add(new DtoResposta(label, rota, timmer/1000000));
 
             // Garantimos que removemos apenas 1
             for (int r: rota.rotas()) {
