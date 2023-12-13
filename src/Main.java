@@ -20,6 +20,7 @@ public class Main {
             respostas.add(getRotas(caminhoes, rotasGerada));
         }
 
+        int numConjunto = 1;
         double mediaTempoTotal = 0.0;
         double desvioPadraoTotal = 0.0;
         int amplitudeTotal = 0;
@@ -41,6 +42,7 @@ public class Main {
             desvioPadraoTotal += desvioPadrao;
             amplitudeTotal += amplitude;
 
+            System.out.println("Conjunto (" + (numConjunto++) + ")");
             System.out.println("Totais de rota: " + Arrays.toString(totaisRotas));
             System.out.println("Desvio Padrão: " + desvioPadrao);
             System.out.println("Amplitude: " + amplitude);
